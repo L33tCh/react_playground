@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Product } from './types/Product';
+
+
 
 function App() {
+  const [products, setProducts] = useState<Product[]>([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then(response => response.json())
+      .then((prods: Product[]) => {
+        setProducts([...prods]);
+        console.log(prods);
+      })
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +30,11 @@ function App() {
         >
           Learn React
         </a>
+        {products.map(prod => {
+          return (
+            <div key={prod.id}>{prod.id}: {prod.name}</div>
+            );
+        })}
       </header>
     </div>
   );
