@@ -3,8 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import { Product } from './types/Product';
 
-
-
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
@@ -32,8 +30,10 @@ function App() {
         </a>
         {products.map(prod => {
           return (
-            <div key={prod.id}>{prod.id}: {prod.name}</div>
-            );
+            <div key={prod.id}>
+              {prod.id}: {prod.name}
+            </div>
+          );
         })}
       </header>
     </div>
