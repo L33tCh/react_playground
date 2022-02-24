@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Product } from './types/Product';
+import { CardList } from './components/card-list/card-list.component';
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -10,7 +11,7 @@ function App() {
       .then(response => response.json())
       .then((prods: Product[]) => {
         setProducts([...prods]);
-        console.log(prods);
+        console.log({component: "App", prods});
       })
   }, []);
   return (
@@ -28,13 +29,8 @@ function App() {
         >
           Learn React
         </a>
-        {products.map(prod => {
-          return (
-            <div key={prod.id}>
-              {prod.id}: {prod.name}
-            </div>
-          );
-        })}
+        <CardList products={products}>
+        </CardList>
       </header>
     </div>
   );
