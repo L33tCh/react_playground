@@ -7,11 +7,9 @@ interface IProps {
     handleChange: Dispatch<SetStateAction<string>>;
 };
 
-export const SearchBox: React.FC<IProps> = props => (
+export const SearchBox: React.FC<IProps> = ({placeHolder, handleChange}) =>
     <input
         className='search-box'
         type='search'
-        placeholder={props.placeHolder}
-        onChange={e => props.handleChange(e.target.value)}
-    />
-);
+        placeholder={placeHolder}
+        onChange={e => handleChange(e.target.value)}/>

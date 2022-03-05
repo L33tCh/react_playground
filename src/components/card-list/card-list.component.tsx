@@ -8,9 +8,7 @@ interface IProps {
     products: Product[]
 };
 
-export const CardList: React.FC<IProps> = props => {
-    return (<div className='card-list'>
-    {props.products.map((product: Product) => (
-      <Card key={product.id} product={product}></Card>
-    ))}</div>);
-};
+export const CardList: React.FC<IProps> = ({products}) =>
+  <div className='card-list'>
+    { products.map(product => <Card key={product.id} product={product}></Card>) }
+  </div>;
