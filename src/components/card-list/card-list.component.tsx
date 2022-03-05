@@ -10,5 +10,5 @@ interface IProps {
 
 export const CardList: React.FC<IProps> = ({products}) =>
   <div className='card-list'>
-    { products.map(product => <Card key={product.id} product={product}></Card>) }
+      { products.map(product => <Card key={product.id} product={product}></Card>) }
   </div>;
